@@ -10,8 +10,13 @@
 ////////////////////////////////////
 if @injournal 'insufficient mana'
   clearjournal
-  useskill 'meditation'
   while mana < maxmana
+    while not buffexists 'Meditation'
+      useskill 'Meditation'
+      headmsg 'Meditaition!'
+      pause 3500
+    endwhile
+    pause 1000
   endwhile
 else
   if skill 'magery' < 30
