@@ -8,11 +8,15 @@
 //                                //
 //      ~~Made by kdivers~~       //
 ////////////////////////////////////
-if @injournal 'insufficient mana'
-  clearjournal
-  useskill 'meditation'
-  while mana < maxmana
-  endwhile
+if @injournal 'Mana to use this'
+    clearjournal
+    while mana < maxmana
+      while not buffexists 'Meditation'
+        useskill 'Meditation'
+        pause 1000
+      endwhile
+      pause 1000
+    endwhile
 else
   if skill 'magery' < 30
     headmsg 'Buy more skill!'
